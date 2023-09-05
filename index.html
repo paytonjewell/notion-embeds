@@ -1,0 +1,52 @@
+<html>
+  <div class='greeting-container'>
+  <h2 id='greeting'> Greeting</h2>
+  <h3 id='date'> Date</h3>
+  <h4 id='time'>Time  </h4>
+</div>
+  <style>
+    .greeting-container {
+  display: flex;
+  flex-direction: column;
+  font-family: Monospace;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.5);
+  max-width: 25%;
+}
+  </style>
+  <script>
+    const name = 'Payton';
+
+let today = new Date();
+let hrs = today.getHours();
+
+// Greeting
+
+let greeting;
+if (hrs < 12) {
+  greeting = `Good Morning, ${name}`;
+} else if (hrs >= 12 && hrs < 16) {
+  greeting = `Good Afternoon, ${name}`;
+} else if (hrs >= 16 && hrs <=24) {
+  greeting = 'Good Evening, ${name}';
+}
+
+document.getElementById('greeting').innerHTML = greeting;
+
+// Date & Time
+const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+let weekday = daysOfWeek[today.getDay()]
+const months = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.']
+let currentMonth = months[today.getMonth()]
+let day = today.getDate();
+let year = today.getFullYear()
+let time = `${hrs}:${today.getMinutes()} ${hrs < 12 ? 'AM' : 'PM'}`
+
+document.getElementById('date').innerHTML = `Today is ${weekday}, ${currentMonth} ${day}, ${year}.`
+
+document.getElementById('time').innerHTML = time;
+
+  </script>
+</html>
